@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mentoria Meritus ENEM - Lara Pacheco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root {
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --ground:#F3F5F8; --surface:#FFFFFF; --surface-2:#E9EDF2; --surface-3:#FAFBFC;
+  --ink:#111823; --ink-2:#4B5666; --ink-3:#7C8798;
+  --line:#DCE1E8; --line-2:#C3CBD6;
+  --accent:#1B2A4A; --accent-ink:#FFFFFF;
+  --mark:#F4EC72; --done:#25794F;
+  --shadow:0 1px 2px rgba(17,24,35,.05), 0 4px 14px rgba(17,24,35,.05);
+  --c-0:#A8154C;
+  --c-1:#256D2A;
+  --c-2:#1B44B8;
+  --c-3:#5A1785;
+  --c-4:#C97C1B;
+  --c-5:#1E7A5A;
+  --c-6:#1E6FA8;
+  --c-7:#8A5426;
+  --c-8:#7C8798;
+  --c-9:#111823;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme:dark;
+    --ground:#0D1117; --surface:#161C25; --surface-2:#1F2732; --surface-3:#131922;
+    --ink:#E7ECF3; --ink-2:#A2AEBE; --ink-3:#6C7889;
+    --line:#28313D; --line-2:#3A4552;
+    --accent:#93B4FF; --accent-ink:#0D1117;
+    --mark:#CFC33B; --done:#57BC8A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+    --c-0:#F07AA0;
+  --c-1:#63B96A;
+  --c-2:#8AA5F5;
+  --c-3:#BE86E3;
+  --c-4:#EDAC5C;
+  --c-5:#5FCB9F;
+  --c-6:#69B6E6;
+  --c-7:#D79A5C;
+  --c-8:#A2AEBE;
+  --c-9:#E7ECF3;
+  }
+}
+* { box-sizing:border-box; }
+html { scroll-padding-top:env(safe-area-inset-top,0px); }
+body { margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased; }
+.prose { font-family:"Source Serif 4",Georgia,serif; font-size:16.5px; line-height:1.62; color:var(--ink-2); max-width:66ch; }
+.wrap { max-width:1360px; margin:0 auto; padding:0 20px; }
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
+
+header { position:sticky; top:0; z-index:30; background:var(--surface); border-bottom:1px solid var(--line); }
+.hbar { display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:14px 0 12px; }
+h1 { font-size:19px; font-weight:700; letter-spacing:-.02em; margin:0; }
+h1 .sub { display:block; font-size:11px; font-weight:500; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); margin-top:3px; }
+.spacer { flex:1; }
+.stat { display:flex; flex-direction:column; gap:1px; }
+.stat b { font-family:"IBM Plex Mono",monospace; font-size:20px; font-weight:600; letter-spacing:-.02em; line-height:1.1; font-variant-numeric:tabular-nums; }
+.stat span { font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+.bar { height:6px; background:var(--surface-2); border-radius:99px; overflow:hidden; min-width:150px; }
+.bar i { display:block; height:100%; width:0; background:var(--done); border-radius:99px; transition:width .35s ease; }
+.btn { font-family:inherit; font-size:12px; font-weight:600; padding:7px 13px; border-radius:7px;
+  border:1px solid var(--accent); background:var(--accent); color:var(--accent-ink); cursor:pointer; }
+.btn:hover { filter:brightness(1.12); }
+
+.spine { display:flex; gap:6px; overflow-x:auto; padding:0 0 12px; scrollbar-width:thin; }
+.wk { flex:0 0 auto; min-width:160px; text-align:left; cursor:pointer; padding:8px 11px 9px;
+  border-radius:9px; border:1px solid var(--line); background:var(--surface-3);
+  font-family:inherit; color:var(--ink-2); display:flex; flex-direction:column; gap:5px; transition:border-color .15s, background .15s; }
+.wk:hover { border-color:var(--line-2); }
+.wk .n { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+.wk .d { font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums; }
+.wk .p { height:3px; background:var(--surface-2); border-radius:99px; overflow:hidden; }
+.wk .p i { display:block; height:100%; width:0; background:var(--done); transition:width .3s; }
+.wk[aria-selected="true"] { background:var(--accent); border-color:var(--accent); }
+.wk[aria-selected="true"] .n { color:var(--accent-ink); opacity:.72; }
+.wk[aria-selected="true"] .d { color:var(--accent-ink); }
+.wk[aria-selected="true"] .p { background:rgba(255,255,255,.22); }
+.wk.now .d::after { content:"·hoje"; margin-left:5px; font-size:10px; color:var(--ink-3); }
+.wk[aria-selected="true"].now .d::after { color:var(--accent-ink); opacity:.75; }
+
+main { padding:22px 0 60px; }
+.daysw { overflow-x:auto; padding-bottom:4px; }
+.days { display:grid; grid-template-columns:repeat(7,minmax(172px,1fr)); gap:10px; align-items:start; min-width:0; }
+.day { display:flex; flex-direction:column; gap:8px; min-width:0; }
+.dayhd { display:flex; align-items:baseline; justify-content:space-between; gap:6px; padding:0 2px 7px; border-bottom:1.5px solid var(--line); }
+.dayhd .nm { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+.dayhd .dt { font-family:"IBM Plex Mono",monospace; font-size:15px; font-weight:600; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+.dayhd .tt { font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--ink-3); }
+.day.today .dayhd { border-bottom-color:var(--ink); }
+.day.today .dayhd .dt { background:linear-gradient(transparent 58%, var(--mark) 58%); padding:0 3px; }
+.day.today .dayhd .nm { color:var(--ink); }
+
+.blk { background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--h);
+  border-radius:9px; padding:10px 11px 11px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:7px; transition:opacity .2s; }
+.blk .top { display:flex; align-items:center; gap:7px; }
+.blk .mat { font-size:9.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--h); }
+.blk .dur { font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-3); margin-left:auto; white-space:nowrap; }
+.blk h3 { margin:0; font-size:13px; font-weight:600; line-height:1.34; letter-spacing:-.005em; text-wrap:balance; }
+.why { margin:0; font-size:10.5px; color:var(--ink-3); line-height:1.35; border-top:1px dashed var(--line); padding-top:6px; }
+.chk { display:flex; align-items:center; gap:7px; cursor:pointer; user-select:none; }
+.chk input { width:15px; height:15px; accent-color:var(--done); cursor:pointer; margin:0; flex:0 0 auto; }
+.chk span { font-size:10.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); }
+.blk.done { opacity:.58; }
+.blk.done h3 { text-decoration:line-through; text-decoration-color:var(--ink-3); }
+.blk.done .chk span { color:var(--done); }
+.blk.lista { background:var(--surface-3); }
+.blk.lista h3 { color:var(--h); }
+.blk.cad { background:color-mix(in srgb, var(--h) 9%, var(--surface)); border-color:color-mix(in srgb, var(--h) 35%, var(--line)); border-left-width:4px; }
+.blk.cad h3 { color:var(--h); }
+.blk.fix { background:transparent; border-style:dashed; box-shadow:none; }
+.blk.fix h3 { color:var(--ink-2); font-weight:500; }
+.blk.exam { border:1.5px solid var(--h); border-left-width:3px; }
+.blk.exam h3 { font-size:14px; color:var(--h); }
+
+section { margin-top:52px; }
+h2 { font-size:16px; font-weight:700; letter-spacing:-.015em; margin:0 0 4px; }
+.lede { font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); font-weight:600; margin:0 0 16px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(176px,1fr)); gap:9px; }
+.mcard { background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--h); border-radius:9px; padding:11px 12px 12px; display:flex; flex-direction:column; gap:2px; }
+.mcard .nm { font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--h); }
+.mcard .big { font-family:"IBM Plex Mono",monospace; font-size:23px; font-weight:600; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+.mcard .meta { font-size:11px; color:var(--ink-3); }
+.notes { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; }
+.note h3 { font-size:13px; font-weight:700; margin:0 0 6px; letter-spacing:-.005em; }
+.note p { margin:0; }
+.callout { border:1px solid var(--line); border-left:3px solid var(--accent); background:var(--surface); border-radius:9px; padding:14px 16px; }
+footer { margin-top:48px; padding:18px 0 40px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-3); display:flex; gap:14px; flex-wrap:wrap; }
+@media (max-width:900px) {
+  .daysw { overflow-x:visible; }
+  .days { grid-template-columns:1fr; }
+  h1 { font-size:17px; }
+}
+@media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
+</style></head><body>
+
+<header>
+  <div class="wrap">
+    <div class="hbar">
+      <h1>Reta Final da Lara<span class="sub">2 semanas · 3 – 15 nov 2026</span></h1>
+      <div class="spacer"></div>
+      <div class="stat"><b id="dias">—</b><span id="diaslbl">dias p/ o 1º dia</span></div>
+      <div class="stat"><b id="feitos">0</b><span>de 60 tempos</span></div>
+      <div class="stat" style="gap:6px"><div class="bar"><i id="prog"></i></div><span id="pct">0% concluído</span></div>
+      <button class="btn" id="hoje">Ir para hoje</button>
+    </div>
+    <div class="spine" id="spine" role="tablist" aria-label="Semanas"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="daysw"><div class="days" id="grade"></div></div>
+
+  <section>
+    <h2>Carga por matéria</h2>
+    <p class="lede">6 horas por dia · 5 horas nos dias de compromisso</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section>
+    <h2>Como este plano funciona</h2>
+    <p class="lede">Quatro coisas que vale saber</p>
+    <div class="notes">
+      <div class="note">
+        <h3>Uma área por semana</h3>
+        <p class="prose">Esta semana é só de Linguagens e Humanas, que caem no domingo, 8 de novembro. A semana seguinte é só de Natureza e Matemática, para o domingo, 15. Cada dia tem 6 horas de estudo.</p>
+      </div>
+      <div class="note">
+        <h3>Os compromissos descontam</h3>
+        <p class="prose">Terça, quarta e sexta ela tem 1 hora comprometida — aula de Química, aula de Redação e o compromisso das 17h. Nesses dias o estudo cai para 5 horas, não para 6 mais a aula. O bloco tracejado marca o horário.</p>
+      </div>
+      <div class="note">
+        <h3>As listas vêm primeiro</h3>
+        <p class="prose">São 5 listas de cada área por semana, 1 hora cada, e o Caderno de Revisão do Nacional todo dia. O tempo que sobra vai para conteúdo: na primeira semana, História e Geografia — Filosofia, Sociologia e Língua Portuguesa ela cobre pelas listas. Na segunda, Matemática, Física, Química e Biologia.</p>
+      </div>
+      <div class="note">
+        <h3>Um assunto por bloco</h3>
+        <p class="prose">Todo tempo tem 1 hora e um único assunto, escolhido por incidência nas provas do ENEM e colocado em ordem pedagógica — o que serve de base vem antes do que depende dele.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="callout">
+      <h3 style="margin:0 0 6px;font-size:13px;font-weight:700">Na véspera e no dia</h3>
+      <p class="prose" style="margin:0">Separe documento com foto e caneta esferográfica preta de tubo transparente, e confira o local de prova antes do sábado. Nos dois domingos os portões fecham às 13h, no horário de Brasília.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>60 tempos de 1 hora · 20 listas · Caderno de Revisão do Nacional todo dia · 12 blocos de Humanas · 17 de Natureza e Matemática</span>
+    <span>Assuntos definidos por levantamento de incidência nas provas do ENEM</span>
+  </footer>
+</main>
+
+<script>
+const SEMANAS = [{"n": 1, "ini": "2026-11-03", "fim": "2026-11-08", "foco": "Linguagens e Humanas", "dias": [{"data": "2026-11-03", "dia": "Terça", "blocos": [{"materia": "COMPROMISSO", "rotulo": "Compromisso", "min": 60, "bloco": "Aula de Química", "nota": "14h às 15h · já descontado das 6 horas", "id": "c2026-11-03"}, {"materia": "HISTÓRIA", "rotulo": "História", "min": 60, "bloco": "Brasil Colônia: escravidão e resistência", "nota": "", "id": "l1"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Linguagens", "nota": "", "id": "l2"}, {"materia": "GEOGRAFIA", "rotulo": "Geografia", "min": 60, "bloco": "Demografia e migrações", "nota": "", "id": "l3"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Humanas", "nota": "", "id": "l4"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l5"}]}, {"data": "2026-11-04", "dia": "Quarta", "blocos": [{"materia": "COMPROMISSO", "rotulo": "Compromisso", "min": 60, "bloco": "Aula de Redação", "nota": "18h às 19h · já descontado das 6 horas", "id": "c2026-11-04"}, {"materia": "HISTÓRIA", "rotulo": "História", "min": 60, "bloco": "Revolução Industrial e o mundo do trabalho", "nota": "", "id": "l6"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Linguagens", "nota": "", "id": "l7"}, {"materia": "GEOGRAFIA", "rotulo": "Geografia", "min": 60, "bloco": "Urbanização brasileira", "nota": "", "id": "l8"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Humanas", "nota": "", "id": "l9"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l10"}]}, {"data": "2026-11-05", "dia": "Quinta", "blocos": [{"materia": "HISTÓRIA", "rotulo": "História", "min": 60, "bloco": "República Velha: coronelismo e revoltas", "nota": "", "id": "l11"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Linguagens", "nota": "", "id": "l12"}, {"materia": "GEOGRAFIA", "rotulo": "Geografia", "min": 60, "bloco": "Agronegócio e questão agrária", "nota": "", "id": "l13"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Humanas", "nota": "", "id": "l14"}, {"materia": "HISTÓRIA", "rotulo": "História", "min": 60, "bloco": "Era Vargas", "nota": "", "id": "l15"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l16"}]}, {"data": "2026-11-06", "dia": "Sexta", "blocos": [{"materia": "COMPROMISSO", "rotulo": "Compromisso", "min": 60, "bloco": "Compromisso", "nota": "17h às 18h · já descontado das 6 horas", "id": "c2026-11-06"}, {"materia": "GEOGRAFIA", "rotulo": "Geografia", "min": 60, "bloco": "Matriz energética brasileira", "nota": "", "id": "l17"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Linguagens", "nota": "", "id": "l18"}, {"materia": "HISTÓRIA", "rotulo": "História", "min": 60, "bloco": "Guerra Fria", "nota": "", "id": "l19"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Humanas", "nota": "", "id": "l20"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l21"}]}, {"data": "2026-11-07", "dia": "Sábado", "blocos": [{"materia": "GEOGRAFIA", "rotulo": "Geografia", "min": 60, "bloco": "Mudanças climáticas", "nota": "", "id": "l22"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 5 de Linguagens", "nota": "", "id": "l23"}, {"materia": "HISTÓRIA", "rotulo": "História", "min": 60, "bloco": "Ditadura militar e redemocratização", "nota": "", "id": "l24"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 5 de Humanas", "nota": "", "id": "l25"}, {"materia": "GEOGRAFIA", "rotulo": "Geografia", "min": 60, "bloco": "Globalização e geopolítica", "nota": "", "id": "l26"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l27"}]}, {"data": "2026-11-08", "dia": "Domingo", "blocos": [{"materia": "ENEM", "rotulo": "ENEM", "min": 0, "bloco": "1º dia do ENEM: Linguagens, Humanas e Redação", "nota": "Portões fecham às 13h (Brasília)", "id": "x0"}]}]}, {"n": 2, "ini": "2026-11-09", "fim": "2026-11-15", "foco": "Natureza e Matemática", "dias": [{"data": "2026-11-09", "dia": "Segunda", "blocos": [{"materia": "MATEMÁTICA", "rotulo": "Matemática", "min": 60, "bloco": "Razão e proporção", "nota": "", "id": "l28"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Matemática", "nota": "", "id": "l29"}, {"materia": "FÍSICA", "rotulo": "Física", "min": 60, "bloco": "Trabalho e energia", "nota": "", "id": "l30"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Natureza", "nota": "", "id": "l31"}, {"materia": "QUÍMICA", "rotulo": "Química", "min": 60, "bloco": "Estequiometria", "nota": "", "id": "l32"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l33"}]}, {"data": "2026-11-10", "dia": "Terça", "blocos": [{"materia": "COMPROMISSO", "rotulo": "Compromisso", "min": 60, "bloco": "Aula de Química", "nota": "14h às 15h · já descontado das 6 horas", "id": "c2026-11-10"}, {"materia": "MATEMÁTICA", "rotulo": "Matemática", "min": 60, "bloco": "Porcentagem", "nota": "", "id": "l34"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Matemática", "nota": "", "id": "l35"}, {"materia": "BIOLOGIA", "rotulo": "Biologia", "min": 60, "bloco": "Metabolismo energético", "nota": "", "id": "l36"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Natureza", "nota": "", "id": "l37"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l38"}]}, {"data": "2026-11-11", "dia": "Quarta", "blocos": [{"materia": "COMPROMISSO", "rotulo": "Compromisso", "min": 60, "bloco": "Aula de Redação", "nota": "18h às 19h · já descontado das 6 horas", "id": "c2026-11-11"}, {"materia": "MATEMÁTICA", "rotulo": "Matemática", "min": 60, "bloco": "Estatística", "nota": "", "id": "l39"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Matemática", "nota": "", "id": "l40"}, {"materia": "FÍSICA", "rotulo": "Física", "min": 60, "bloco": "Calorimetria", "nota": "", "id": "l41"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Natureza", "nota": "", "id": "l42"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l43"}]}, {"data": "2026-11-12", "dia": "Quinta", "blocos": [{"materia": "QUÍMICA", "rotulo": "Química", "min": 60, "bloco": "Soluções e concentração", "nota": "", "id": "l44"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Matemática", "nota": "", "id": "l45"}, {"materia": "BIOLOGIA", "rotulo": "Biologia", "min": 60, "bloco": "Leis de Mendel", "nota": "", "id": "l46"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Natureza", "nota": "", "id": "l47"}, {"materia": "MATEMÁTICA", "rotulo": "Matemática", "min": 60, "bloco": "Áreas de figuras planas", "nota": "", "id": "l48"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l49"}]}, {"data": "2026-11-13", "dia": "Sexta", "blocos": [{"materia": "COMPROMISSO", "rotulo": "Compromisso", "min": 60, "bloco": "Compromisso", "nota": "17h às 18h · já descontado das 6 horas", "id": "c2026-11-13"}, {"materia": "FÍSICA", "rotulo": "Física", "min": 60, "bloco": "Ondulatória", "nota": "", "id": "l50"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 5 de Matemática", "nota": "", "id": "l51"}, {"materia": "QUÍMICA", "rotulo": "Química", "min": 60, "bloco": "Funções orgânicas", "nota": "", "id": "l52"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 5 de Natureza", "nota": "", "id": "l53"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l54"}]}, {"data": "2026-11-14", "dia": "Sábado", "blocos": [{"materia": "BIOLOGIA", "rotulo": "Biologia", "min": 60, "bloco": "Fisiologia humana", "nota": "", "id": "l55"}, {"materia": "MATEMÁTICA", "rotulo": "Matemática", "min": 60, "bloco": "Probabilidade", "nota": "", "id": "l56"}, {"materia": "FÍSICA", "rotulo": "Física", "min": 60, "bloco": "Eletrodinâmica: potência e consumo", "nota": "", "id": "l57"}, {"materia": "QUÍMICA", "rotulo": "Química", "min": 60, "bloco": "Química ambiental", "nota": "", "id": "l58"}, {"materia": "BIOLOGIA", "rotulo": "Biologia", "min": 60, "bloco": "Ecologia", "nota": "", "id": "l59"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l60"}]}, {"data": "2026-11-15", "dia": "Domingo", "blocos": [{"materia": "ENEM", "rotulo": "ENEM", "min": 0, "bloco": "2º dia do ENEM: Natureza e Matemática", "nota": "Portões fecham às 13h (Brasília)", "id": "x1"}]}]}];
+const SUBIDX = {"HISTÓRIA": 0, "GEOGRAFIA": 1, "MATEMÁTICA": 2, "FÍSICA": 3, "QUÍMICA": 4, "BIOLOGIA": 5, "LISTAS": 6, "CADERNO": 7, "COMPROMISSO": 8, "ENEM": 9};
+const ROTULO = {"HISTÓRIA": "História", "GEOGRAFIA": "Geografia", "MATEMÁTICA": "Matemática", "FÍSICA": "Física", "QUÍMICA": "Química", "BIOLOGIA": "Biologia", "LISTAS": "Listas", "CADERNO": "Caderno do Nacional", "COMPROMISSO": "Compromissos", "ENEM": "ENEM"};
+const RESUMO = [{"m": "LISTAS", "h": 1200, "n": 20}, {"m": "CADERNO", "h": 660, "n": 11}, {"m": "HISTÓRIA", "h": 360, "n": 6}, {"m": "GEOGRAFIA", "h": 360, "n": 6}, {"m": "MATEMÁTICA", "h": 300, "n": 5}, {"m": "FÍSICA", "h": 240, "n": 4}, {"m": "QUÍMICA", "h": 240, "n": 4}, {"m": "BIOLOGIA", "h": 240, "n": 4}];
+const TOTAL = 60;
+const PROVAS = [new Date("2026-11-08T13:30:00-03:00"), new Date("2026-11-15T13:30:00-03:00")];
+const KEY = "lara-enem-2026-reta-v1";
+
+let feitos = new Set();
+try { const raw = localStorage.getItem(KEY); if (raw) feitos = new Set(JSON.parse(raw)); } catch (e) {}
+function salvar() { try { localStorage.setItem(KEY, JSON.stringify([...feitos])); } catch (e) {} }
+
+const agora = new Date();
+const hojeISO = agora.getFullYear() + "-" + String(agora.getMonth()+1).padStart(2,"0") + "-" + String(agora.getDate()).padStart(2,"0");
+const fmt = s => { const p = s.split("-"); return p[2] + "/" + p[1]; };
+const dur = m => m >= 60 ? (Math.floor(m/60) + "h" + (m%60 ? String(m%60).padStart(2,"0") : "")) : m + " min";
+const contavel = b => b.materia !== "ENEM" && b.materia !== "COMPROMISSO";
+
+function semanaDeHoje() {
+  for (let i=0;i<SEMANAS.length;i++) if (hojeISO >= SEMANAS[i].ini && hojeISO <= SEMANAS[i].fim) return i;
+  return hojeISO < SEMANAS[0].ini ? 0 : SEMANAS.length-1;
+}
+let atual = semanaDeHoje();
+
+function pintarSpine() {
+  const el = document.getElementById("spine");
+  el.innerHTML = SEMANAS.map((s,i) => {
+    const bl = s.dias.flatMap(d => d.blocos).filter(contavel);
+    const ok = bl.filter(b => feitos.has(b.id)).length;
+    const pc = bl.length ? Math.round(ok/bl.length*100) : 0;
+    const now = (hojeISO >= s.ini && hojeISO <= s.fim) ? " now" : "";
+    return `<button class="wk${now}" role="tab" aria-selected="${i===atual}" data-i="${i}">
+      <span class="n">Semana ${s.n} · ${s.foco}</span>
+      <span class="d">${fmt(s.ini)} – ${fmt(s.fim)}</span>
+      <span class="p"><i style="width:${pc}%"></i></span></button>`;
+  }).join("");
+  el.querySelectorAll(".wk").forEach(b => b.onclick = () => { atual = +b.dataset.i; render(); });
+}
+
+function pintarGrade() {
+  const s = SEMANAS[atual];
+  document.getElementById("grade").innerHTML = s.dias.map(d => {
+    const hoje = d.data === hojeISO ? " today" : "";
+    const totDia = d.blocos.filter(contavel).reduce((a,b) => a + b.min, 0);
+    const blocos = d.blocos.map(b => {
+      const idx = SUBIDX[b.materia];
+      const done = feitos.has(b.id);
+      const exam = b.materia === "ENEM";
+      const fix = b.materia === "COMPROMISSO";
+      const cad = b.materia === "CADERNO";
+      const lista = b.materia === "LISTAS";
+      const why = b.nota ? `<p class="why">${b.nota}</p>` : "";
+      const chk = (exam || fix) ? "" : `<label class="chk"><input type="checkbox" data-id="${b.id}" ${done?"checked":""}>
+         <span>${done ? "Feito" : "Marcar como feito"}</span></label>`;
+      const d2 = exam ? "" : `<span class="dur">${dur(b.min)}</span>`;
+      return `<article class="blk${done?" done":""}${exam?" exam":""}${lista?" lista":""}${cad?" cad":""}${fix?" fix":""}" style="--h:var(--c-${idx})">
+        <div class="top"><span class="mat">${b.rotulo}</span>${d2}</div>
+        <h3>${b.bloco}</h3>${why}${chk}</article>`;
+    }).join("");
+    const tt = totDia ? `<span class="tt">${dur(totDia)} de estudo</span>` : "";
+    return `<div class="day${hoje}"><div class="dayhd"><span class="nm">${d.dia}</span>${tt}
+      <span class="dt">${fmt(d.data)}</span></div>${blocos}</div>`;
+  }).join("");
+  document.querySelectorAll("#grade input[type=checkbox]").forEach(cb => {
+    cb.onchange = () => { cb.checked ? feitos.add(cb.dataset.id) : feitos.delete(cb.dataset.id); salvar(); render(); };
+  });
+}
+
+function pintarTopo() {
+  const ok = feitos.size, pc = Math.round(ok/TOTAL*100);
+  document.getElementById("feitos").textContent = ok;
+  document.getElementById("prog").style.width = pc + "%";
+  document.getElementById("pct").textContent = pc + "% concluído";
+  const agoraMs = Date.now();
+  let i = PROVAS.findIndex(p => p.getTime() > agoraMs);
+  if (i < 0) { document.getElementById("dias").textContent = "0"; document.getElementById("diaslbl").textContent = "ENEM concluído"; return; }
+  const dias = Math.max(0, Math.ceil((PROVAS[i] - agoraMs) / 86400000));
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("diaslbl").textContent = "dias p/ o " + (i+1) + "º dia";
+}
+
+function pintarCards() {
+  document.getElementById("cards").innerHTML = RESUMO.map(r =>
+    `<div class="mcard" style="--h:var(--c-${SUBIDX[r.m]})">
+      <span class="nm">${ROTULO[r.m]}</span>
+      <span class="big">${dur(r.h)}</span>
+      <span class="meta">${r.n} ${r.n===1?"tempo":"tempos"}</span></div>`).join("");
+}
+
+function render() { pintarSpine(); pintarGrade(); pintarTopo(); }
+document.getElementById("hoje").onclick = () => {
+  atual = semanaDeHoje(); render();
+  const t = document.querySelector(".day.today");
+  if (t) t.scrollIntoView({block:"nearest", behavior:"smooth"});
+};
+pintarCards();
+render();
+</script>
+</body></html>
