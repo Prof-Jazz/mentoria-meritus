@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Reta Final da Luiza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root {
+  color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --ground:#F3F5F8; --surface:#FFFFFF; --surface-2:#E9EDF2; --surface-3:#FAFBFC;
+  --ink:#111823; --ink-2:#4B5666; --ink-3:#7C8798;
+  --line:#DCE1E8; --line-2:#C3CBD6;
+  --accent:#1B2A4A; --accent-ink:#FFFFFF;
+  --mark:#F4EC72; --done:#25794F;
+  --shadow:0 1px 2px rgba(17,24,35,.05), 0 4px 14px rgba(17,24,35,.05);
+  --c-0:#1B44B8;
+  --c-1:#5A1785;
+  --c-2:#C97C1B;
+  --c-3:#1E7A5A;
+  --c-4:#1E6FA8;
+  --c-5:#8A5426;
+  --c-6:#111823;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme:dark;
+    --ground:#0D1117; --surface:#161C25; --surface-2:#1F2732; --surface-3:#131922;
+    --ink:#E7ECF3; --ink-2:#A2AEBE; --ink-3:#6C7889;
+    --line:#28313D; --line-2:#3A4552;
+    --accent:#93B4FF; --accent-ink:#0D1117;
+    --mark:#CFC33B; --done:#57BC8A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+    --c-0:#8AA5F5;
+  --c-1:#BE86E3;
+  --c-2:#EDAC5C;
+  --c-3:#5FCB9F;
+  --c-4:#69B6E6;
+  --c-5:#D79A5C;
+  --c-6:#E7ECF3;
+  }
+}
+* { box-sizing:border-box; }
+html { scroll-padding-top:env(safe-area-inset-top,0px); }
+body { margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased; }
+.prose { font-family:"Source Serif 4",Georgia,serif; font-size:16.5px; line-height:1.62; color:var(--ink-2); max-width:66ch; }
+.wrap { max-width:1360px; margin:0 auto; padding:0 20px; }
+.logo { height:36px; width:auto; flex:0 0 auto; }
+.logo.escuro { display:none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo.claro { display:none; }
+  :root:not([data-theme="light"]) .logo.escuro { display:block; }
+}
+.hbar h1 { padding-left:15px; border-left:1px solid var(--line); }
+@media (max-width:620px) { .hbar h1 { padding-left:0; border-left:0; } }
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
+
+header { position:sticky; top:0; z-index:30; background:var(--surface); border-bottom:1px solid var(--line); }
+.hbar { display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:14px 0 12px; }
+h1 { font-size:19px; font-weight:700; letter-spacing:-.02em; margin:0; }
+h1 .sub { display:block; font-size:11px; font-weight:500; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); margin-top:3px; }
+.spacer { flex:1; }
+.stat { display:flex; flex-direction:column; gap:1px; }
+.stat b { font-family:"IBM Plex Mono",monospace; font-size:20px; font-weight:600; letter-spacing:-.02em; line-height:1.1; font-variant-numeric:tabular-nums; }
+.stat span { font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); font-weight:600; }
+.bar { height:6px; background:var(--surface-2); border-radius:99px; overflow:hidden; min-width:150px; }
+.bar i { display:block; height:100%; width:0; background:var(--done); border-radius:99px; transition:width .35s ease; }
+.btn { font-family:inherit; font-size:12px; font-weight:600; padding:7px 13px; border-radius:7px;
+  border:1px solid var(--accent); background:var(--accent); color:var(--accent-ink); cursor:pointer; }
+.btn:hover { filter:brightness(1.12); }
+
+.spine { display:flex; gap:6px; overflow-x:auto; padding:0 0 12px; scrollbar-width:thin; }
+.wk { flex:0 0 auto; min-width:160px; text-align:left; cursor:pointer; padding:8px 11px 9px;
+  border-radius:9px; border:1px solid var(--line); background:var(--surface-3);
+  font-family:inherit; color:var(--ink-2); display:flex; flex-direction:column; gap:5px; transition:border-color .15s, background .15s; }
+.wk:hover { border-color:var(--line-2); }
+.wk .n { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+.wk .d { font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums; }
+.wk .p { height:3px; background:var(--surface-2); border-radius:99px; overflow:hidden; }
+.wk .p i { display:block; height:100%; width:0; background:var(--done); transition:width .3s; }
+.wk[aria-selected="true"] { background:var(--accent); border-color:var(--accent); }
+.wk[aria-selected="true"] .n { color:var(--accent-ink); opacity:.72; }
+.wk[aria-selected="true"] .d { color:var(--accent-ink); }
+.wk[aria-selected="true"] .p { background:rgba(255,255,255,.22); }
+.wk.now .d::after { content:"·hoje"; margin-left:5px; font-size:10px; color:var(--ink-3); }
+.wk[aria-selected="true"].now .d::after { color:var(--accent-ink); opacity:.75; }
+
+main { padding:22px 0 60px; }
+.daysw { overflow-x:auto; padding-bottom:4px; }
+.days { display:grid; grid-template-columns:repeat(7,minmax(172px,1fr)); gap:10px; align-items:start; min-width:0; }
+.day { display:flex; flex-direction:column; gap:8px; min-width:0; }
+.dayhd { display:flex; align-items:baseline; justify-content:space-between; gap:6px; padding:0 2px 7px; border-bottom:1.5px solid var(--line); }
+.dayhd .nm { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+.dayhd .dt { font-family:"IBM Plex Mono",monospace; font-size:15px; font-weight:600; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+.dayhd .tt { font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--ink-3); }
+.day.today .dayhd { border-bottom-color:var(--ink); }
+.day.today .dayhd .dt { background:linear-gradient(transparent 58%, var(--mark) 58%); padding:0 3px; }
+.day.today .dayhd .nm { color:var(--ink); }
+.day.livre .dayhd { opacity:.6; }
+.livre-msg { border:1px dashed var(--line-2); border-radius:9px; padding:18px 12px; text-align:center;
+  font-size:11.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); }
+
+.blk { background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--h);
+  border-radius:9px; padding:10px 11px 11px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:7px; transition:opacity .2s; }
+.blk .top { display:flex; align-items:center; gap:7px; }
+.blk .mat { font-size:9.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--h); }
+.blk .dur { font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-3); margin-left:auto; white-space:nowrap; }
+.blk h3 { margin:0; font-size:13px; font-weight:600; line-height:1.34; letter-spacing:-.005em; text-wrap:balance; }
+.why { margin:0; font-size:10.5px; color:var(--ink-3); line-height:1.35; border-top:1px dashed var(--line); padding-top:6px; }
+.chk { display:flex; align-items:center; gap:7px; cursor:pointer; user-select:none; }
+.chk input { width:15px; height:15px; accent-color:var(--done); cursor:pointer; margin:0; flex:0 0 auto; }
+.chk span { font-size:10.5px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); }
+.blk.done { opacity:.58; }
+.blk.done h3 { text-decoration:line-through; text-decoration-color:var(--ink-3); }
+.blk.done .chk span { color:var(--done); }
+.blk.lista { background:var(--surface-3); }
+.blk.lista h3 { color:var(--h); }
+.blk.cad { background:color-mix(in srgb, var(--h) 9%, var(--surface)); border-color:color-mix(in srgb, var(--h) 35%, var(--line)); border-left-width:4px; }
+.blk.cad h3 { color:var(--h); }
+.daynote { font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-3); background:var(--surface-3); border:1px solid var(--line);
+  border-radius:6px; padding:5px 7px; text-align:center; }
+.blk.exam { border:1.5px solid var(--h); border-left-width:3px; }
+.blk.exam h3 { font-size:14px; color:var(--h); }
+
+section { margin-top:52px; }
+h2 { font-size:16px; font-weight:700; letter-spacing:-.015em; margin:0 0 4px; }
+.lede { font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); font-weight:600; margin:0 0 16px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(176px,1fr)); gap:9px; }
+.mcard { background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--h); border-radius:9px; padding:11px 12px 12px; display:flex; flex-direction:column; gap:2px; }
+.mcard .nm { font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--h); }
+.mcard .big { font-family:"IBM Plex Mono",monospace; font-size:23px; font-weight:600; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+.mcard .meta { font-size:11px; color:var(--ink-3); }
+.notes { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; }
+.note h3 { font-size:13px; font-weight:700; margin:0 0 6px; letter-spacing:-.005em; }
+.note p { margin:0; }
+.callout { border:1px solid var(--line); border-left:3px solid var(--accent); background:var(--surface); border-radius:9px; padding:14px 16px; }
+footer { margin-top:48px; padding:18px 0 40px; border-top:1px solid var(--line); font-size:11.5px; color:var(--ink-3); display:flex; gap:14px; flex-wrap:wrap; }
+@media (max-width:900px) {
+  .daysw { overflow-x:visible; }
+  .days { grid-template-columns:1fr; }
+  h1 { font-size:17px; }
+}
+@media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
+</style></head><body>
+
+<header>
+  <div class="wrap">
+    <div class="hbar">
+      <img class="logo claro" width="278" height="120" alt="Jazz · Professor de Matemática" src="data:image/png;base64,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">
+      <img class="logo escuro" width="278" height="120" alt="Jazz · Professor de Matemática" src="data:image/png;base64,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">
+      <h1>Reta Final da Luiza<span class="sub">2 semanas · 4 – 15 nov 2026</span></h1>
+      <div class="spacer"></div>
+      <div class="stat"><b id="dias">—</b><span id="diaslbl">dias p/ o 1º dia</span></div>
+      <div class="stat"><b id="feitos">0</b><span>de 32 tempos</span></div>
+      <div class="stat" style="gap:6px"><div class="bar"><i id="prog"></i></div><span id="pct">0% concluído</span></div>
+      <button class="btn" id="hoje">Ir para hoje</button>
+    </div>
+    <div class="spine" id="spine" role="tablist" aria-label="Semanas"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="daysw"><div class="days" id="grade"></div></div>
+
+  <section>
+    <h2>Carga por matéria</h2>
+    <p class="lede">4 horas por dia · sexta até as 16h · fim de semana livre</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section>
+    <h2>Como este plano funciona</h2>
+    <p class="lede">Quatro coisas que vale saber</p>
+    <div class="notes">
+      <div class="note">
+        <h3>Uma área por semana</h3>
+        <p class="prose">Esta semana é só de Linguagens e Humanas, que caem no domingo, 8 de novembro. A semana seguinte é só de Natureza e Matemática, para o domingo, 15. A quinta-feira, que estava vazia na agenda antiga, agora tem estudo.</p>
+      </div>
+      <div class="note">
+        <h3>Quatro horas por dia</h3>
+        <p class="prose">De segunda a sexta, quatro tempos de 1 hora. Na sexta o estudo precisa terminar às 16h. Sábado é descanso e domingo é dia de prova: nos dois, nada de estudo.</p>
+      </div>
+      <div class="note">
+        <h3>As listas vêm primeiro</h3>
+        <p class="prose">O Caderno de Revisão do Nacional é 1 hora todo dia, sem exceção. Depois dele vêm as listas. Esta semana tem só três dias, então ela cabe quase inteira em listas: são 9, e o conteúdo novo fica para a semana seguinte.</p>
+      </div>
+      <div class="note">
+        <h3>Conteúdo que rende ponto</h3>
+        <p class="prose">Sobraram 5 tempos de conteúdo na semana 2. Entraram os assuntos que mais caem e que são mais fáceis de garantir — porcentagem, leitura de gráficos, consumo de energia elétrica, química ambiental e ecologia —, e não os mais difíceis. Um assunto por bloco.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="callout">
+      <h3 style="margin:0 0 6px;font-size:13px;font-weight:700">Na véspera e no dia</h3>
+      <p class="prose" style="margin:0">A sexta termina às 16h e o sábado é livre justamente para isso: separe documento com foto e caneta esferográfica preta de tubo transparente, confira o local de prova e durma cedo. Nos dois domingos os portões fecham às 13h, no horário de Brasília.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>32 tempos de 1 hora · 19 listas · Caderno de Revisão do Nacional todo dia · 5 blocos de conteúdo · fins de semana livres</span>
+    <span>Assuntos definidos por levantamento de incidência nas provas do ENEM</span>
+  </footer>
+</main>
+
+<script>
+const SEMANAS = [{"n": 1, "ini": "2026-11-04", "fim": "2026-11-08", "foco": "Linguagens e Humanas", "dias": [{"data": "2026-11-04", "dia": "Quarta", "nota": "", "blocos": [{"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Linguagens", "nota": "", "id": "l1"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Humanas", "nota": "", "id": "l2"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Linguagens", "nota": "", "id": "l3"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l4"}]}, {"data": "2026-11-05", "dia": "Quinta", "nota": "", "blocos": [{"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Humanas", "nota": "", "id": "l5"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Linguagens", "nota": "", "id": "l6"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Humanas", "nota": "", "id": "l7"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l8"}]}, {"data": "2026-11-06", "dia": "Sexta", "nota": "Termina às 16h", "blocos": [{"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Linguagens", "nota": "", "id": "l9"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Humanas", "nota": "", "id": "l10"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 5 de Linguagens", "nota": "", "id": "l11"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l12"}]}, {"data": "2026-11-07", "dia": "Sábado", "nota": "", "blocos": []}, {"data": "2026-11-08", "dia": "Domingo", "nota": "", "blocos": [{"materia": "ENEM", "rotulo": "ENEM", "min": 0, "bloco": "1º dia do ENEM: Linguagens, Humanas e Redação", "nota": "Portões fecham às 13h (Brasília)", "id": "x0"}]}]}, {"n": 2, "ini": "2026-11-09", "fim": "2026-11-15", "foco": "Natureza e Matemática", "dias": [{"data": "2026-11-09", "dia": "Segunda", "nota": "", "blocos": [{"materia": "MATEMÁTICA", "rotulo": "Matemática", "min": 60, "bloco": "Porcentagem", "nota": "", "id": "l13"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Matemática", "nota": "", "id": "l14"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 1 de Natureza", "nota": "", "id": "l15"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l16"}]}, {"data": "2026-11-10", "dia": "Terça", "nota": "", "blocos": [{"materia": "FÍSICA", "rotulo": "Física", "min": 60, "bloco": "Potência e consumo de energia elétrica", "nota": "", "id": "l17"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Matemática", "nota": "", "id": "l18"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 2 de Natureza", "nota": "", "id": "l19"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l20"}]}, {"data": "2026-11-11", "dia": "Quarta", "nota": "", "blocos": [{"materia": "MATEMÁTICA", "rotulo": "Matemática", "min": 60, "bloco": "Leitura de gráficos e tabelas", "nota": "", "id": "l21"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Matemática", "nota": "", "id": "l22"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 3 de Natureza", "nota": "", "id": "l23"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l24"}]}, {"data": "2026-11-12", "dia": "Quinta", "nota": "", "blocos": [{"materia": "QUÍMICA", "rotulo": "Química", "min": 60, "bloco": "Química ambiental", "nota": "", "id": "l25"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Matemática", "nota": "", "id": "l26"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 4 de Natureza", "nota": "", "id": "l27"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l28"}]}, {"data": "2026-11-13", "dia": "Sexta", "nota": "Termina às 16h", "blocos": [{"materia": "BIOLOGIA", "rotulo": "Biologia", "min": 60, "bloco": "Ecologia", "nota": "", "id": "l29"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 5 de Matemática", "nota": "", "id": "l30"}, {"materia": "LISTAS", "rotulo": "Lista", "min": 60, "bloco": "Lista 5 de Natureza", "nota": "", "id": "l31"}, {"materia": "CADERNO", "rotulo": "Caderno", "min": 60, "bloco": "Caderno de Revisão do Nacional", "nota": "No mínimo 1 hora, todo dia", "id": "l32"}]}, {"data": "2026-11-14", "dia": "Sábado", "nota": "", "blocos": []}, {"data": "2026-11-15", "dia": "Domingo", "nota": "", "blocos": [{"materia": "ENEM", "rotulo": "ENEM", "min": 0, "bloco": "2º dia do ENEM: Natureza e Matemática", "nota": "Portões fecham às 13h (Brasília)", "id": "x1"}]}]}];
+const SUBIDX = {"MATEMÁTICA": 0, "FÍSICA": 1, "QUÍMICA": 2, "BIOLOGIA": 3, "LISTAS": 4, "CADERNO": 5, "ENEM": 6};
+const ROTULO = {"MATEMÁTICA": "Matemática", "FÍSICA": "Física", "QUÍMICA": "Química", "BIOLOGIA": "Biologia", "LISTAS": "Listas", "CADERNO": "Caderno do Nacional", "ENEM": "ENEM"};
+const RESUMO = [{"m": "LISTAS", "h": 1140, "n": 19}, {"m": "CADERNO", "h": 480, "n": 8}, {"m": "MATEMÁTICA", "h": 120, "n": 2}, {"m": "FÍSICA", "h": 60, "n": 1}, {"m": "QUÍMICA", "h": 60, "n": 1}, {"m": "BIOLOGIA", "h": 60, "n": 1}];
+const TOTAL = 32;
+const PROVAS = [new Date("2026-11-08T13:30:00-03:00"), new Date("2026-11-15T13:30:00-03:00")];
+const KEY = "luiza-enem-2026-reta-v1";
+
+let feitos = new Set();
+try { const raw = localStorage.getItem(KEY); if (raw) feitos = new Set(JSON.parse(raw)); } catch (e) {}
+function salvar() { try { localStorage.setItem(KEY, JSON.stringify([...feitos])); } catch (e) {} }
+
+const agora = new Date();
+const hojeISO = agora.getFullYear() + "-" + String(agora.getMonth()+1).padStart(2,"0") + "-" + String(agora.getDate()).padStart(2,"0");
+const fmt = s => { const p = s.split("-"); return p[2] + "/" + p[1]; };
+const dur = m => m >= 60 ? (Math.floor(m/60) + "h" + (m%60 ? String(m%60).padStart(2,"0") : "")) : m + " min";
+const contavel = b => b.materia !== "ENEM";
+
+function semanaDeHoje() {
+  for (let i=0;i<SEMANAS.length;i++) if (hojeISO >= SEMANAS[i].ini && hojeISO <= SEMANAS[i].fim) return i;
+  return hojeISO < SEMANAS[0].ini ? 0 : SEMANAS.length-1;
+}
+let atual = semanaDeHoje();
+
+function pintarSpine() {
+  const el = document.getElementById("spine");
+  el.innerHTML = SEMANAS.map((s,i) => {
+    const bl = s.dias.flatMap(d => d.blocos).filter(contavel);
+    const ok = bl.filter(b => feitos.has(b.id)).length;
+    const pc = bl.length ? Math.round(ok/bl.length*100) : 0;
+    const now = (hojeISO >= s.ini && hojeISO <= s.fim) ? " now" : "";
+    return `<button class="wk${now}" role="tab" aria-selected="${i===atual}" data-i="${i}">
+      <span class="n">Semana ${s.n} · ${s.foco}</span>
+      <span class="d">${fmt(s.ini)} – ${fmt(s.fim)}</span>
+      <span class="p"><i style="width:${pc}%"></i></span></button>`;
+  }).join("");
+  el.querySelectorAll(".wk").forEach(b => b.onclick = () => { atual = +b.dataset.i; render(); });
+}
+
+function pintarGrade() {
+  const s = SEMANAS[atual];
+  document.getElementById("grade").innerHTML = s.dias.map(d => {
+    const hoje = d.data === hojeISO ? " today" : "";
+    if (!d.blocos.length) {
+      return `<div class="day livre${hoje}"><div class="dayhd"><span class="nm">${d.dia}</span>
+        <span class="dt">${fmt(d.data)}</span></div><div class="livre-msg">Descanso</div></div>`;
+    }
+    const totDia = d.blocos.filter(contavel).reduce((a,b) => a + b.min, 0);
+    const blocos = d.blocos.map(b => {
+      const idx = SUBIDX[b.materia];
+      const done = feitos.has(b.id);
+      const exam = b.materia === "ENEM";
+      const cad = b.materia === "CADERNO";
+      const lista = b.materia === "LISTAS";
+      const why = b.nota ? `<p class="why">${b.nota}</p>` : "";
+      const chk = exam ? "" : `<label class="chk"><input type="checkbox" data-id="${b.id}" ${done?"checked":""}>
+         <span>${done ? "Feito" : "Marcar como feito"}</span></label>`;
+      const d2 = exam ? "" : `<span class="dur">${dur(b.min)}</span>`;
+      return `<article class="blk${done?" done":""}${exam?" exam":""}${lista?" lista":""}${cad?" cad":""}" style="--h:var(--c-${idx})">
+        <div class="top"><span class="mat">${b.rotulo}</span>${d2}</div>
+        <h3>${b.bloco}</h3>${why}${chk}</article>`;
+    }).join("");
+    const tt = totDia ? `<span class="tt">${dur(totDia)} de estudo</span>` : "";
+    const nd = d.nota ? `<div class="daynote">${d.nota}</div>` : "";
+    return `<div class="day${hoje}"><div class="dayhd"><span class="nm">${d.dia}</span>${tt}
+      <span class="dt">${fmt(d.data)}</span></div>${nd}${blocos}</div>`;
+  }).join("");
+  document.querySelectorAll("#grade input[type=checkbox]").forEach(cb => {
+    cb.onchange = () => { cb.checked ? feitos.add(cb.dataset.id) : feitos.delete(cb.dataset.id); salvar(); render(); };
+  });
+}
+
+function pintarTopo() {
+  const ok = feitos.size, pc = Math.round(ok/TOTAL*100);
+  document.getElementById("feitos").textContent = ok;
+  document.getElementById("prog").style.width = pc + "%";
+  document.getElementById("pct").textContent = pc + "% concluído";
+  const agoraMs = Date.now();
+  let i = PROVAS.findIndex(p => p.getTime() > agoraMs);
+  if (i < 0) { document.getElementById("dias").textContent = "0"; document.getElementById("diaslbl").textContent = "ENEM concluído"; return; }
+  const dias = Math.max(0, Math.ceil((PROVAS[i] - agoraMs) / 86400000));
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("diaslbl").textContent = "dias p/ o " + (i+1) + "º dia";
+}
+
+function pintarCards() {
+  document.getElementById("cards").innerHTML = RESUMO.map(r =>
+    `<div class="mcard" style="--h:var(--c-${SUBIDX[r.m]})">
+      <span class="nm">${ROTULO[r.m]}</span>
+      <span class="big">${dur(r.h)}</span>
+      <span class="meta">${r.n} ${r.n===1?"tempo":"tempos"}</span></div>`).join("");
+}
+
+function render() { pintarSpine(); pintarGrade(); pintarTopo(); }
+document.getElementById("hoje").onclick = () => {
+  atual = semanaDeHoje(); render();
+  const t = document.querySelector(".day.today");
+  if (t) t.scrollIntoView({block:"nearest", behavior:"smooth"});
+};
+pintarCards();
+render();
+</script>
+</body></html>
